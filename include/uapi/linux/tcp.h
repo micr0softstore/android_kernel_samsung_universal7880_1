@@ -195,7 +195,11 @@ struct tcp_info {
 <<<<<<< HEAD
 =======
 	__u64	tcpi_bytes_acked; /* RFC4898 tcpEStatsAppHCThruOctetsAcked */
+<<<<<<< HEAD
 >>>>>>> 8aa745d6dbdb (tcp: add tcpi_bytes_acked to tcp_info)
+=======
+	__u64	tcpi_bytes_received; /* RFC4898 tcpEStatsAppHCThruOctetsReceived */
+>>>>>>> 820491036477 (tcp: add tcpi_bytes_received to tcp_info)
 };
 
 /* for TCP_MD5SIG socket option */
