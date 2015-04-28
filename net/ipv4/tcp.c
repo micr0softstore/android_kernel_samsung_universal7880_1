@@ -2977,6 +2977,13 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 
 	rate = READ_ONCE(sk->sk_max_pacing_rate);
 	info->tcpi_max_pacing_rate = rate != ~0U ? rate : ~0ULL;
+<<<<<<< HEAD
+=======
+
+	spin_lock_bh(&sk->sk_lock.slock);
+	info->tcpi_bytes_acked = tp->bytes_acked;
+	spin_unlock_bh(&sk->sk_lock.slock);
+>>>>>>> 8aa745d6dbdb (tcp: add tcpi_bytes_acked to tcp_info)
 }
 EXPORT_SYMBOL_GPL(tcp_get_info);
 
