@@ -193,6 +193,7 @@ struct tcp_info {
 	__u64	tcpi_pacing_rate;
 	__u64	tcpi_max_pacing_rate;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	__u64	tcpi_bytes_acked; /* RFC4898 tcpEStatsAppHCThruOctetsAcked */
 <<<<<<< HEAD
@@ -200,6 +201,12 @@ struct tcp_info {
 =======
 	__u64	tcpi_bytes_received; /* RFC4898 tcpEStatsAppHCThruOctetsReceived */
 >>>>>>> 820491036477 (tcp: add tcpi_bytes_received to tcp_info)
+=======
+	__u64	tcpi_bytes_acked;    /* RFC4898 tcpEStatsAppHCThruOctetsAcked */
+	__u64	tcpi_bytes_received; /* RFC4898 tcpEStatsAppHCThruOctetsReceived */
+	__u32	tcpi_segs_out;	     /* RFC4898 tcpEStatsPerfSegsOut */
+	__u32	tcpi_segs_in;	     /* RFC4898 tcpEStatsPerfSegsIn */
+>>>>>>> f0117e35e1f4 (tcp: add tcpi_segs_in and tcpi_segs_out to tcp_info)
 };
 
 /* for TCP_MD5SIG socket option */

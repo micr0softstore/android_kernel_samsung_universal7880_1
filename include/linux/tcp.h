@@ -214,12 +214,24 @@ struct tcp_sock {
 				 * sum(delta(rcv_nxt)), or how many bytes
 				 * were acked.
 				 */
+<<<<<<< HEAD
 >>>>>>> 820491036477 (tcp: add tcpi_bytes_received to tcp_info)
+=======
+	u32	segs_in;	/* RFC4898 tcpEStatsPerfSegsIn
+				 * total number of segments in.
+				 */
+>>>>>>> f0117e35e1f4 (tcp: add tcpi_segs_in and tcpi_segs_out to tcp_info)
  	u32	rcv_nxt;	/* What we want to receive next 	*/
 	u32	copied_seq;	/* Head of yet unread data		*/
 	u32	rcv_wup;	/* rcv_nxt on last window update sent	*/
  	u32	snd_nxt;	/* Next sequence we send		*/
+<<<<<<< HEAD
 
+=======
+	u32	segs_out;	/* RFC4898 tcpEStatsPerfSegsOut
+				 * The total number of segments sent.
+				 */
+>>>>>>> f0117e35e1f4 (tcp: add tcpi_segs_in and tcpi_segs_out to tcp_info)
 	u64	bytes_acked;	/* RFC4898 tcpEStatsAppHCThruOctetsAcked
 				 * sum(delta(snd_una)), or how many bytes
 				 * were acked.
