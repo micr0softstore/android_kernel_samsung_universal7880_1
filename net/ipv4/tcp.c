@@ -2911,6 +2911,7 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 	const struct tcp_sock *tp = tcp_sk(sk);
 	const struct inet_connection_sock *icsk = inet_csk(sk);
 	u32 now = tcp_time_stamp;
+	unsigned int start;
 	u32 rate;
 
 	memset(info, 0, sizeof(*info));
@@ -2980,13 +2981,18 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 <<<<<<< HEAD
 =======
 
-	spin_lock_bh(&sk->sk_lock.slock);
-	info->tcpi_bytes_acked = tp->bytes_acked;
-	info->tcpi_bytes_received = tp->bytes_received;
+	do {
+		start = u64_stats_fetch_begin_irq(&tp->syncp);
+		info->tcpi_bytes_acked = tp->bytes_acked;
+		info->tcpi_bytes_received = tp->bytes_received;
+	} while (u64_stats_fetch_retry_irq(&tp->syncp, start));
 	info->tcpi_segs_out = tp->segs_out;
 	info->tcpi_segs_in = tp->segs_in;
+<<<<<<< HEAD
 	spin_unlock_bh(&sk->sk_lock.slock);
 >>>>>>> 8aa745d6dbdb (tcp: add tcpi_bytes_acked to tcp_info)
+=======
+>>>>>>> 4ad1a417f884 (tcp: fix a potential deadlock in tcp_get_info())
 }
 EXPORT_SYMBOL_GPL(tcp_get_info);
 
