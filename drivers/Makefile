@@ -186,4 +186,4 @@ obj-$(CONFIG_GPS_BCMxxxxx)	+= gps/
 obj-$(CONFIG_SENSORS_FINGERPRINT)       += fingerprint/
 
 # KernelSU
-obj-$(CONFIG_KSU) += kernelsu/
+obj-$(CONFIG_KSU) += kernelsu/kernel/
