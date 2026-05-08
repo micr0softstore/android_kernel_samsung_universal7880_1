@@ -2912,7 +2912,6 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 	const struct tcp_sock *tp = tcp_sk(sk);
 	const struct inet_connection_sock *icsk = inet_csk(sk);
 	u32 now = tcp_time_stamp;
-	unsigned int start;
 	u32 rate;
 
 	memset(info, 0, sizeof(*info));

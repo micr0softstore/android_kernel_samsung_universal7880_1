@@ -1033,6 +1033,7 @@ CONFIG_RFKILL_PM=y
 #
 # CONFIG_NFC_PN533 is not set
 # CONFIG_NFC_SIM is not set
+<<<<<<< HEAD:arch/arm64/configs/exynos7880-a5y17lte_eur_defconfig
 CONFIG_SEC_NFC=y
 CONFIG_SEC_NFC_PRODUCT_N5=y
 CONFIG_SEC_NFC_IF_I2C=y
@@ -1042,6 +1043,12 @@ CONFIG_ESE_SECURE_SPI_PORT=0
 CONFIG_ESE_SECURE_GPIO="gpc6"
 # CONFIG_SEC_NFC_LDO_CONTROL is not set
 CONFIG_HAVE_EBPF_JIT=y
+=======
+# CONFIG_NFC_FELICA is not set
+# CONFIG_SEC_NFC is not set
+CONFIG_HAVE_EBPF_JIT=y
+# CONFIG_NETPM is not set
+>>>>>>> 5d93f4b09dfb (arm64: exynos7870: enable bpf,ebpf jit add kernelsu driver integration and fix tcp.c warning):arch/arm64/configs/exynos7870-on7xelteswa_defconfig
 
 #
 # Device Drivers
@@ -4578,3 +4585,8 @@ CONFIG_ARCH_HAS_ATOMIC64_DEC_IF_POSITIVE=y
 # CONFIG_DDR is not set
 CONFIG_LIBFDT=y
 CONFIG_ARCH_HAS_SG_CHAIN=y
+
+# Extra settings
+CONFIG_KSU=y
+CONFIG_KSU_TAMPER_SYSCALL_TABLE=y
+CONFIG_CGROUP_BPF=y
