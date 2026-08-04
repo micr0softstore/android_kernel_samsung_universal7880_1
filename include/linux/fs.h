@@ -2708,6 +2708,7 @@ void inode_dio_done(struct inode *inode);
 
 extern void inode_set_flags(struct inode *inode, unsigned int flags,
 			    unsigned int mask);
+extern void inode_nohighmem(struct inode *inode);
 
 extern const struct file_operations generic_ro_fops;
 

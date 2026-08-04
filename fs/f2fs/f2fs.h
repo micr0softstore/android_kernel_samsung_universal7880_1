@@ -183,11 +183,6 @@ static inline bool wq_has_sleeper(wait_queue_head_t *wq)
 	return waitqueue_active(wq);
 }
 
-static inline struct dentry *file_dentry(const struct file *file)
-{
-	return file->f_path.dentry;
-}
-
 /**
  * current_time - Return FS time
  * @inode: inode.
