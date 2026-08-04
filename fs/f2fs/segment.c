@@ -884,8 +884,12 @@ static void f2fs_submit_discard_endio(struct bio *bio, int err)
 	bio_put(bio);
 }
 
-/* copied from block/blk-lib.c in 4.10-rc1 */
-static int __blkdev_issue_discard(struct block_device *bdev, sector_t sector,
+/*
+ * copied from block/blk-lib.c in 4.10-rc1, renamed to avoid clashing with
+ * the kernel's own exported __blkdev_issue_discard() declared in
+ * include/linux/blkdev.h
+ */
+static int __f2fs_blkdev_issue_discard(struct block_device *bdev, sector_t sector,
 		sector_t nr_sects, gfp_t gfp_mask, int flags,
 		struct bio **biop)
 {
@@ -1009,7 +1013,7 @@ static void __submit_discard_cmd(struct f2fs_sb_info *sbi,
 
 	trace_f2fs_issue_discard(dc->bdev, dc->start, dc->len);
 
-	dc->error = __blkdev_issue_discard(dc->bdev,
+	dc->error = __f2fs_blkdev_issue_discard(dc->bdev,
 				SECTOR_FROM_BLOCK(dc->start),
 				SECTOR_FROM_BLOCK(dc->len),
 				GFP_NOFS, 0, &bio);
@@ -2454,7 +2458,6 @@ int f2fs_trim_fs(struct f2fs_sb_info *sbi, struct fstrim_range *range)
 	if (start >= MAX_BLKADDR(sbi) || range->len < sbi->blocksize)
 		return -EINVAL;
 
-	cpc.trimmed = 0;
 	if (end <= MAIN_BLKADDR(sbi))
 		goto out;
 
