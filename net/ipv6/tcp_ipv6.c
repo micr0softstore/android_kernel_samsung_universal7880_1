@@ -156,8 +156,11 @@ static int tcp_v6_pre_connect(struct sock *sk, struct sockaddr *uaddr,
 	return BPF_CGROUP_RUN_PROG_INET6_CONNECT(sk, uaddr);
 }
 
-static int tcp_v6_connect(struct sock *sk, struct sockaddr *uaddr,
-			  int addr_len)
+#ifndef CONFIG_MPTCP
+static
+#endif
+int tcp_v6_connect(struct sock *sk, struct sockaddr *uaddr,
+		  int addr_len)
 {
 	struct sockaddr_in6 *usin = (struct sockaddr_in6 *) uaddr;
 	struct inet_sock *inet = inet_sk(sk);
