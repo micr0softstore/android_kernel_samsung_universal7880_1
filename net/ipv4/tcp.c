@@ -2978,8 +2978,6 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 
 	rate = READ_ONCE(sk->sk_max_pacing_rate);
 	info->tcpi_max_pacing_rate = rate != ~0U ? rate : ~0ULL;
-<<<<<<< HEAD
-=======
 
 	do {
 		start = u64_stats_fetch_begin_irq(&tp->syncp);
@@ -2988,11 +2986,6 @@ void tcp_get_info(const struct sock *sk, struct tcp_info *info)
 	} while (u64_stats_fetch_retry_irq(&tp->syncp, start));
 	info->tcpi_segs_out = tp->segs_out;
 	info->tcpi_segs_in = tp->segs_in;
-<<<<<<< HEAD
-	spin_unlock_bh(&sk->sk_lock.slock);
->>>>>>> 8aa745d6dbdb (tcp: add tcpi_bytes_acked to tcp_info)
-=======
->>>>>>> 4ad1a417f884 (tcp: fix a potential deadlock in tcp_get_info())
 }
 EXPORT_SYMBOL_GPL(tcp_get_info);
 
