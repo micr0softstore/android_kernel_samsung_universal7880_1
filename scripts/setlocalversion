@@ -72,8 +72,6 @@ scm_version()
 			printf -- '-svn%s' "`git svn find-rev $head`"
 		fi
 
-		# Always append this to localversion
-		printf '%s' -rise
 
 		# All done with git
 		return
